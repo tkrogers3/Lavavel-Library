@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/register', function () {
+    return view('registration');
+});
+
+Route::get('/books', function () {
+    return view('books.show', [
+        'books' => App\Book::all()
+        ]);
+});
+
+//Route::get('/books', 'BooksController@index');
+Route::get('/books/{book}', 'BooksController@show')->name('books.show');
